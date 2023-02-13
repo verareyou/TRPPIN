@@ -11,18 +11,17 @@ const Skill = () => {
     }
   };
 
-//  parallax effect
-const [scrollpos, setScrollPos] = useState(0);
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrollPos(window.scrollY);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
-
+  //  parallax effect
+  const [scrollpos, setScrollPos] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPos(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const variants = {
     hidden: { opacity: 0 },
@@ -34,18 +33,19 @@ const [scrollpos, setScrollPos] = useState(0);
   };
 
   return (
-    <div className="skill h-full w-full flex relative flex-col justify-center items-center">
-    <div className="frame h-full w-full absolute overflow-clip ">
-      <motion.h1
-        variants={variants}
-        initial="hidden"
-        animate="visible"
-        exit="hidden"
-        className=" absolute text-black  text-center text-[30vw] "
-      >
-        SKILLS
-      </motion.h1>
-    </div>
+    <div className="skill h-full w-full flex relative flex-col justify-center items-center
+    ">
+      <div className="frame h-full w-full absolute overflow-clip ">
+        <motion.h1
+          variants={variants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          className=" absolute text-[#959595]  text-center text-[30vw] "
+        >
+        _________
+        </motion.h1>
+      </div>
 
       <motion.div
         initial={{
@@ -61,7 +61,7 @@ const [scrollpos, setScrollPos] = useState(0);
           },
         }}
         className={`
-         h-full bg-[#00000025] z-[1] backdrop-blur-[10px] `}
+         h-full bg-[#ffffff00] z-[1] backdrop-blur-[10px] `}
       ></motion.div>
     </div>
   );

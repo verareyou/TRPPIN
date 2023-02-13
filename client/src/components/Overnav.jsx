@@ -9,6 +9,11 @@ const Overnav = () => {
   const [nav, setNav] = useState("landing");
 
   useEffect(() => {
+    const scrollOffset = window.scrollY;
+    console.log(scrollOffset)
+  }, []);
+
+  useEffect(() => {
     const text = textRef.current;
     const textAnimation = gsap.timeline({
       scrollTrigger: {
@@ -46,8 +51,16 @@ const Overnav = () => {
     },
   ];
   return (
-    <motion.div initial={{y:'100%', opacity: 0, translateX: '-50%'}} animate={{y:'0%', opacity: 1, translateX: '-50%', transition: {duration: 0.5, easing: 'easeInOut'}}}
-     className="Overnav fixed rounded-lg left-1/2 bottom-0 mb-8 bg-[#000000b4] z-10 text-[#a7a7a7] flex justify-center items-center ">
+    <motion.div
+      initial={{ y: "100%", opacity: 0, translateX: "-50%" }}
+      animate={{
+        y: "0%",
+        opacity: 1,
+        translateX: "-50%",
+        transition: { duration: 0.5, easing: "easeInOut" },
+      }}
+      className="Overnav fixed rounded-lg left-1/2 shadow-xl backdrop-blur-[1px] bottom-0 mb-8 bg-[#000000b4] z-10 text-[#a7a7a7] flex justify-center items-center "
+    >
       <div className=" content flex justify-center items-center m-1">
         {navlinks.map((navlink) => (
           <Link
@@ -56,20 +69,17 @@ const Overnav = () => {
             duration={0}
             smooth={true}
             offset={navlink.scroll}
-            frameBorder="1"
-            onClick={() => {
-              setNav(navlink.link);
-              console.log(navlink.link);
-            }}
-            className={`flex h-12 w-24 cursor-pointer ${
-              navlink.active ? "border-none bg-[#3d3d3d] " : ""
-            } justify-center max-md:h-9 max-md:w-16 items-center ${navlink.link=== 'skill' && 'mx-1'} border border-[#5d5d5d] duration-300 ease-in-out md:hover:w-28 hover:bg-[#3c3c3c] hover:text-[#bebebe] rounded-md bg-[#3f3f3fd7] `}
+            className={`flex h-12 w-24 cursor-pointer justify-center max-md:h-12 max-md:w-16 items-center ${
+              navlink.link === "skill" && "mx-1"
+            }
+             border border-[#5d5d5d] duration-300 ease-in-out md:hover:w-28 hover:bg-[#3c3c3c] hover:text-[#bebebe] rounded-md bg-[#3f3f3fd7] `}
           >
             <p className="z-20 font-bold text-[14px] ">{navlink.name}</p>
           </Link>
         ))}
       </div>
     </motion.div>
+    // ${navlink.active ? "border-none bg-[#2e2e2e] " : ""}
   );
 };
 
